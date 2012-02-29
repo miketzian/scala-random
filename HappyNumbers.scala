@@ -16,13 +16,8 @@ object HappyNumbers {
 	def happyMatches(x: List[Int]):Boolean = {
 		reduceNumber(x.apply(0)) match {
 			case 1 => true
-			case value: Int =>  {
-				if(x.contains(value)) { 
-					false
-				} else { 
-					happyMatches(x.::(value))
-				}
-			}
+			case value:Int if(x.contains(value)) => false
+			case value:Int => happyMatches(x.::(value))
 			case _ => false
 		}
 	}
